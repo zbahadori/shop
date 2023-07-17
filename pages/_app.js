@@ -1,8 +1,11 @@
+import { CartContextProvider } from '../context/cart'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return <div className='bg-gray-100'>
-    <Component {...pageProps} />
+    <CartContextProvider>
+      <Component {...pageProps} />
+    </CartContextProvider>
   </div>
 }
 
