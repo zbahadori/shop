@@ -13,7 +13,13 @@ function reducer(state, action){
 
             const existingItem = state.catr.cartItems.find((item) => item.slug === newItem.slug)
 
-            const cartItems = existingItem ? state.cart.cartItems.map((item) => item.title === existingItem.title ? newItem : item) : [...state.cart.cartItems, newItem]
+            const cartItems = existingItem 
+            ? state.cart.cartItems.map(
+                (item) => item.title === existingItem.title 
+                    ?   newItem 
+                    :   item
+                )
+            : [...state.cart.cartItems, newItem]
             
             return {...state, cart: {...state.cart, cartItems}}
         }

@@ -3,8 +3,11 @@ import Layout from "../../components/Layout";
 
 import ProductItems from "../../components/data/products.json";
 import Image from "next/image";
+import { useContext } from "react";
+import { CartContext } from '../../context/Cart/CartContext'
 
 function ProductPage() {
+  const { state, dispatch } = useContext(CartContext)
   const { query } = useRouter();
   const { slug } = query;
 
@@ -12,6 +15,15 @@ function ProductPage() {
 
   if (!product) {
     return <div>Product Not Found!</div>;
+  }
+
+  function addToCartHandler(){
+    const existingItem = state.cart.cartItems.find(
+      (item) => item.slug === product.slug
+    )
+
+    const qty = existingItem ? existingItem.qty + 1 : 1;
+    dispatch({type: 'ADD_ITEMS', payload: { ...product, qty }})
   }
 
   return (
@@ -41,7 +53,9 @@ function ProductPage() {
             <div>Status: </div>
             <div>{product.count > 0 ? 'Available' : 'Un Available'}</div> 
           </div>
-          <button className="rounded-xl bg-gray-700 text-white px-4 py-2 w-full">Add To Cart</button>
+          <button 
+            onClick={addToCartHandler}
+            className="rounded-xl bg-gray-700 text-white px-4 py-2 w-full">Add To Cart</button>
         </div>
       </div>
     </Layout>
