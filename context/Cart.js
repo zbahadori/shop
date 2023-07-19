@@ -8,10 +8,11 @@ const initalState = {
 
 function reducer(state, action){
      switch(action.type){
+       
         case 'ADD_ITEMS': {
             const newItem = action.payload
 
-            const existingItem = state.catr.cartItems.find((item) => item.slug === newItem.slug)
+            const existingItem = state.cart.cartItems.find((item) => item.slug === newItem.slug)
 
             const cartItems = existingItem 
             ? state.cart.cartItems.map(
@@ -22,6 +23,10 @@ function reducer(state, action){
             : [...state.cart.cartItems, newItem]
             
             return {...state, cart: {...state.cart, cartItems}}
+        }
+        case 'REMOVE_ITEM': {
+            const cartItems = state.cart.cartItems.filter((item) => item.slug !== action.payload.slug)
+            return { ...state, cart: { ...state.cart, cartItems } }
         }
 
         default : return state 
