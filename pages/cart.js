@@ -3,7 +3,12 @@ import Layout from "../components/Layout"
 
 import { CartContext, Store } from '../context/cart'
 import Image from "next/image"
+import { useRouter } from "next/router"
+
+import dynamic from "next/dynamic"  // render component in client side
 function CartPage(){
+
+    const router = useRouter();
     const { state, dispatch } = useContext(CartContext)
     // const { state, dispatch } = useContext(Store)
     const { cart: { cartItems } } = state
@@ -43,8 +48,19 @@ function CartPage(){
                         </tbody>
                     </table>
                 </div>
-             </div>}
+                <div className="p-5">
+                    <div className="pb-5">
+                        Total Price: {' '}
+                        {cartItems.reduce((acc, cur) => acc + cur.qty * cur.price, 0)}
+                    </div>
+                    <div>
+                        <button onClick={() => router.push('/login?redirect=/shipping')} className="rounded-xl bg-gray-700 text-white px-4 py-2">Checkout</button>
+                    </div>
+                </div>
+             </div>
+             }
         </Layout>
     )
 }
-export default CartPage
+// export default CartPage
+export default dynamic(() => Promise.resolve(CartPage), { ssr: false }) // => به صورت داینامیک و به صورت کلاینت ساید رندر بشه CartPage باعث میشه 
