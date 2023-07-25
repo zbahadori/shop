@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-function Product({item}){
+function ProductItem({item}){
     return(
         <div className="bg-white rounded-xl mb-5 block">
             <div className="flex flex-col">
@@ -25,4 +25,4 @@ function Product({item}){
         </div>
     )
 }
-export default Product
+export default ProductItem
