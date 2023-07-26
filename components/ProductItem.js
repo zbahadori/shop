@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-function ProductItem({item}){
+function ProductItem({item, addToCart}){
     return(
         <div className="bg-white rounded-xl mb-5 block">
             <div className="flex flex-col">
@@ -19,7 +19,7 @@ function ProductItem({item}){
                         </a>
                     </Link>
                     <p className="p-2">{item.price}</p>
-                    <button className="rounded-xl bg-gray-700 text-white px-4 py-2">Add To Cart</button>
+                    <button onClick={() => addToCart(item)} className="rounded-xl bg-gray-700 text-white px-4 py-2">Add To Cart</button>
                 </div>
             </div>
         </div>
