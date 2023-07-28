@@ -7,6 +7,7 @@ import { CartContext } from "../context/cart";
 import { Menu } from "@headlessui/react";
 import DropDown from "./DropDown";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -40,11 +41,11 @@ function Layout({ title, children }) {
               <Link href="/cart">
                 <a className="p-2">
                   Cart
-                  {cart.cartItems.length > 0 && (
+                  {/* {cart.cartItems.length > 0 && ( */}
                     <span className="ml-1 rounded-xl bg-gray-200 px-2 py-1 text-xs font-bold">
                       {cartItemsCount}
                     </span>
-                  )}
+                  {/* )} */}
                 </a>
               </Link>
               {status === "loading" ? (

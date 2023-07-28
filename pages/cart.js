@@ -35,8 +35,9 @@ function CartPage(){
                             {cartItems.map((item) => (
                                 <tr key={item.slug} className="border-b">
                                     <td className="text-center">
-                                        <span /* className="flex items-center" */>
-                                            <Image src={item.image} alt={item.title} width={10} height={10} layout="responsive" />
+                                        <span className="flex items-center">
+                                            {/* <Image src={item.image} alt={item.title} width={75} height={75} layout="responsive" /> */}
+                                            <Image src={item.image} alt={item.title} width={75} height={75} />
                                             {item.title}
                                         </span>
                                     </td>

@@ -36,7 +36,7 @@ function reducer(state, action){
             return { ...state, cart: { ...state.cart, cartItems } }
         }
         case 'SAVE_SHIPPING_DATA': {
-            return{
+            return {
                 ...state, 
                 cart:{
                     ...state.cart,
@@ -44,6 +44,15 @@ function reducer(state, action){
                         ...state.cart.shippingData,
                         ...action.payload,
                     }
+                }
+            }
+        }
+        case 'SAVE_PAYMENT_METHOD': {
+            return {
+                ...state, 
+                cart: {
+                    ...state.cart,
+                    paymentMethod: action.payload
                 }
             }
         }

@@ -84,5 +84,6 @@ function Shipping(){
     )
 }
 
-// export default Shipping
-export default dynamic(() => Promise.resolve(Shipping), { ssr: false })
+Shipping.auth = true
+export default Shipping
+// export default dynamic(() => Promise.resolve(Shipping), { ssr: false })

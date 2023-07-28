@@ -33,9 +33,10 @@ function Home({products}) {
   )
 }
 
-export default dynamic(() => Promise.resolve(Home), { ssr: false })
+// export default dynamic(() => Promise.resolve(Home), { ssr: false })
+export default Home
 
-export async function getServerSideProps(){ // این تابع قبل از رندر شدن کامئونننت اجرا میشه
+export async function getServerSideProps(){ // این تابع قبل از رندر شدن کامپونننت اجرا میشه
   await db.connect()
 
   const products = await Product.find().lean() //az lean estefade mikonim ta query sabok tari dashte bashim
